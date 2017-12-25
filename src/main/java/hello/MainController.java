@@ -33,4 +33,10 @@ public class MainController {
 		// This returns a JSON or XML with the users
 		return patientRepository.findAll();
 	}
+	
+	@GetMapping(path="/getpatient")
+	public @ResponseBody Patient getPatientsByID(@RequestParam int id) {
+		// This returns a JSON or XML with the users
+		return patientRepository.findById(id);
+	}
 }

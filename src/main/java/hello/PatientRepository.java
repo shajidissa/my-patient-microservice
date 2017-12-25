@@ -8,4 +8,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface PatientRepository extends CrudRepository<Patient, Long> {
 
+	public Patient findById(int id);
 }
