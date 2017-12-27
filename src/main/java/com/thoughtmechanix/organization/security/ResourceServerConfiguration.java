@@ -27,17 +27,29 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
           .authenticated();
         */
         
+    	/*
     	http
     	.anonymous().and()
     	.authorizeRequests()
         .antMatchers("swagger-ui.html").permitAll()
         .antMatchers("/swagger-ui.html").permitAll()
-        .antMatchers("**/swagger-ui.html").permitAll()
-        .antMatchers("*/swagger-ui.html").permitAll()
-        .antMatchers("**swagger*").permitAll()
-        .antMatchers("swagger").permitAll();
+        .antMatchers("/swagger-ui.html").permitAll()
+        .antMatchers("/swagger-ui.html").permitAll()
+        .antMatchers("swagger*").permitAll()
+        .antMatchers("swagger").permitAll();*/
         //.anyRequest().permitAll();
         
+    	 http
+         .anonymous()
+             .authorities("ROLE_ANONYMOUS")
+             .and()
+         .authorizeRequests()
+             .antMatchers("/").permitAll()
+             .antMatchers("/swagger-ui.html").permitAll()
+             .antMatchers("**/swagger-ui.html").permitAll()
+             .antMatchers("*swagger*").permitAll()
+             .antMatchers(HttpMethod.GET, "/login/**").permitAll()
+             .anyRequest().authenticated();
     
     }
     
