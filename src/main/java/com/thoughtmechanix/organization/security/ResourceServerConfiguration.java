@@ -27,7 +27,9 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
           .authenticated();
         */
         
-    	http.authorizeRequests()
+    	http
+    	.anonymous().and()
+    	.authorizeRequests()
         .antMatchers("/swagger-ui.html").permitAll()
         .anyRequest().permitAll();
         
