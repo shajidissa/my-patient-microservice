@@ -35,8 +35,8 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
         .antMatchers("**/swagger-ui.html").permitAll()
         .antMatchers("*/swagger-ui.html").permitAll()
         .antMatchers("**swagger*").permitAll()
-        .antMatchers("swagger").permitAll()
-        .anyRequest().permitAll();
+        .antMatchers("swagger").permitAll();
+        //.anyRequest().permitAll();
         
     
     }
