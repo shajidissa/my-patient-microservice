@@ -7,23 +7,24 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
-
-import utils.UserContextFilter;
+//import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
+//import utils.UserContextFilter;
 
 import javax.servlet.Filter;
 
 @SpringBootApplication
 @EnableEurekaClient
 @RefreshScope
-@EnableResourceServer
+//@EnableResourceServer
 public class Application extends SpringBootServletInitializer {
 
+	/*
 	@Bean
     public Filter userContextFilter() {
         UserContextFilter userContextFilter = new UserContextFilter();
         return userContextFilter;
     }
+    */
 	
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {

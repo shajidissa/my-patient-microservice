@@ -1,3 +1,8 @@
+#swagger.oauth.url: http://localhost:8080/auth/oauth/token
+
+logging.level.org.springframework.web: DEBUG
+logging.level.org.springframework.security: DEBUG
+
 spring:
   application:
     name: my-patient-microservice
@@ -8,4 +13,6 @@ spring:
     config:
       uri: http://51.141.9.85:8888
       enabled: true
+      
+ 
       
