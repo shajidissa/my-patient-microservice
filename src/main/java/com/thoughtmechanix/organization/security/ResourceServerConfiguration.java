@@ -31,6 +31,11 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
     	.anonymous().and()
     	.authorizeRequests()
         .antMatchers("swagger-ui.html").permitAll()
+        .antMatchers("/swagger-ui.html").permitAll()
+        .antMatchers("**/swagger-ui.html").permitAll()
+        .antMatchers("*/swagger-ui.html").permitAll()
+        .antMatchers("**swagger*").permitAll()
+        .antMatchers("swagger").permitAll()
         .anyRequest().permitAll();
         
     
