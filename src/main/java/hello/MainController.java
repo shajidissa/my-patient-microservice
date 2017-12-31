@@ -35,10 +35,12 @@ public class MainController {
 		return "Saved";
 	}
 	
+	// ResponseEntity<Patient>
 	// https://medium.com/@konstantinnalum/input-validation-and-unit-testing-of-a-rest-controller-in-spring-boot-304b82ca7526
 	@PostMapping(path = "/createpatient")
-	public ResponseEntity<?> createPatient(@Valid @RequestBody Patient patient) {
-		return ResponseEntity.ok(patientRepository.save(patient));
+	public Patient createPatient(@Valid @RequestBody Patient patient) {
+		//return ResponseEntity.ok(patientRepository.save(patient));
+		return patientRepository.save(patient);
 	}
 	
 	
