@@ -1,9 +1,16 @@
 package hello;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -27,6 +34,13 @@ public class MainController {
 		patientRepository.save(n);
 		return "Saved";
 	}
+	
+	// https://medium.com/@konstantinnalum/input-validation-and-unit-testing-of-a-rest-controller-in-spring-boot-304b82ca7526
+	@PostMapping(path = "/createpatient")
+	public ResponseEntity<?> createPatient(@Valid @RequestBody Patient patient) {
+		return ResponseEntity.ok(patientRepository.save(patient));
+	}
+	
 	
 	@GetMapping(path="/all")
 	public @ResponseBody Iterable<Patient> getAllPatients() {
