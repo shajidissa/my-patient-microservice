@@ -40,7 +40,12 @@ public class MainController {
 	@PostMapping(path = "/createpatient")
 	public Patient createPatient(@Valid @RequestBody Patient patient) {
 		//return ResponseEntity.ok(patientRepository.save(patient));
-		return patientRepository.save(patient);
+		
+		Patient n = new Patient();
+		n.setName(patient.getName());
+		n.setNhsid(patient.getNhsid());
+		
+		return patientRepository.save(n);
 	}
 	
 	

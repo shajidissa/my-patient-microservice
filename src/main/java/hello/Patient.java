@@ -14,6 +14,7 @@ import org.hibernate.validator.constraints.NotBlank;
 public class Patient {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+    
     private Integer id;
 
     @NotBlank(message = "name can't empty!")
