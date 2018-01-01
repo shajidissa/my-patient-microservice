@@ -96,7 +96,7 @@ public class MainController  {
 		//if (course == null)
 		//	return ResponseEntity.noContent().build();
 
-		URI location = ServletUriComponentsBuilder.fromPath("/getpatient/{id}").buildAndExpand(n.getId()).toUri();
+		URI location = ServletUriComponentsBuilder.fromPath("/getpatient/{id}").buildAndExpand(p.getId()).toUri();
 
 		return ResponseEntity.created(location).build();
 	}
