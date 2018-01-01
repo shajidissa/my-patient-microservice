@@ -17,3 +17,5 @@ http://localhost:8092/demo/add?name=saj&nhsid=123
 http://localhost:8092/demo/getpatient?id=1
 
 http://localhost:8092/demo/all
+
+http://localhost:8092/swagger-ui.html

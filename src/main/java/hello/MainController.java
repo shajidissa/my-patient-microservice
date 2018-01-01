@@ -1,5 +1,7 @@
 package hello;
 
+import java.net.URI;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 
 @Controller    // This means that this class is a Controller
@@ -81,6 +84,22 @@ public class MainController  {
         */
     }
 	
+	@PostMapping(path = "/createpatient4")
+	public ResponseEntity<Void> createpatient4(@Valid @RequestBody Patient patient) {
+
+		Patient n = new Patient();
+		n.setName(patient.getName());
+		n.setNhsid(patient.getNhsid());
+		
+		Patient p = patientRepository.save(n);
+		
+		//if (course == null)
+		//	return ResponseEntity.noContent().build();
+
+		URI location = ServletUriComponentsBuilder.fromPath("/getpatient/{id}").buildAndExpand(n.getId()).toUri();
+
+		return ResponseEntity.created(location).build();
+	}
 	
 	@GetMapping(path="/all")
 	public @ResponseBody Iterable<Patient> getAllPatients() {
