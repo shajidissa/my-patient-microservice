@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -99,6 +100,43 @@ public class MainController  {
 		URI location = ServletUriComponentsBuilder.fromPath("/getpatient/{id}").buildAndExpand(p.getId()).toUri();
 
 		return ResponseEntity.created(location).build();
+	}
+	
+	@PostMapping(path = "/createpatient5")
+	public Patient createpatient5(@Valid @RequestBody Patient patient) {
+
+		Patient n = new Patient();
+		n.setName(patient.getName());
+		n.setNhsid(patient.getNhsid());
+		
+		Patient p = patientRepository.save(n);
+		
+		System.out.println("%%%%%%%%%%%%%%%" + p.toString());
+		
+		//if (course == null)
+		//	return ResponseEntity.noContent().build();
+
+		//URI location = ServletUriComponentsBuilder.fromPath("/getpatient/{id}").buildAndExpand(p.getId()).toUri();
+
+		return p;
+	}
+	
+	@PostMapping(path = "/createpatient6")
+	public void createpatient6(@Valid @RequestBody Patient patient) {
+
+		Patient n = new Patient();
+		n.setName(patient.getName());
+		n.setNhsid(patient.getNhsid());
+		
+		Patient p = patientRepository.save(n);
+		
+		System.out.println("%%%%%%%%%%%%%%%" + p.toString());
+		
+		//if (course == null)
+		//	return ResponseEntity.noContent().build();
+
+		//URI location = ServletUriComponentsBuilder.fromPath("/getpatient/{id}").buildAndExpand(p.getId()).toUri();
+
 	}
 	
 	@GetMapping(path="/all")
