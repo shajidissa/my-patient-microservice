@@ -1,6 +1,7 @@
 package hello;
 
 import java.net.URI;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -149,6 +150,12 @@ public class MainController  {
 	public @ResponseBody Patient getPatientsByID(@RequestParam int id) {
 		// This returns a JSON or XML with the users
 		return patientRepository.findById(id);
+	}
+	
+	@GetMapping(path="/getpatient")
+	public @ResponseBody List<Patient> getPatientsByName(@RequestParam String name) {
+		// This returns a JSON or XML with the users
+		return patientRepository.findByName(name);
 	}
 
 	/*

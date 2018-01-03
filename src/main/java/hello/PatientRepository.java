@@ -1,5 +1,7 @@
 package hello;
 
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 
 
@@ -9,4 +11,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface PatientRepository extends CrudRepository<Patient, Long> {
 
 	public Patient findById(int id);
+	
+	public List<Patient> findByName(String name);
 }
