@@ -152,7 +152,7 @@ public class MainController  {
 		return patientRepository.findById(id);
 	}
 	
-	@GetMapping(path="/getpatient")
+	@GetMapping(path="/getpatientbyname")
 	public @ResponseBody List<Patient> getPatientsByName(@RequestParam String name) {
 		// This returns a JSON or XML with the users
 		return patientRepository.findByName(name);
