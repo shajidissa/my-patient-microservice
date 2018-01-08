@@ -13,4 +13,6 @@ public interface PatientRepository extends CrudRepository<Patient, Long> {
 	public Patient findById(int id);
 	
 	public List<Patient> findByName(String name);
+	
+	public List<Patient> findByNhsid(String nhsid);
 }

@@ -157,6 +157,12 @@ public class MainController  {
 		// This returns a JSON or XML with the users
 		return patientRepository.findByName(name);
 	}
+	
+	@GetMapping(path="/getpatientbynhsid")
+	public @ResponseBody List<Patient> getPatientsByNhsid(@RequestParam String nhsid) {
+		// This returns a JSON or XML with the users
+		return patientRepository.findByNhsid(nhsid);
+	}
 
 	/*
 	@Override
