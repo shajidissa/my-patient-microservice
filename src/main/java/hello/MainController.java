@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,6 +40,8 @@ public class MainController  {
 		return "Saved";
 	}
 	
+	
+	
 	// ResponseEntity<Patient>
 	// https://medium.com/@konstantinnalum/input-validation-and-unit-testing-of-a-rest-controller-in-spring-boot-304b82ca7526
 	@PostMapping(path = "/createpatient")
@@ -64,6 +67,14 @@ public class MainController  {
 		
 		return "{}";
 	}
+	
+	
+	@PutMapping(path = "/updatepatient")
+	 public ResponseEntity <String> updatePatient(@Valid @RequestBody Patient patient) {
+		patientRepository.save(patient);
+		return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+	}
+	
 	
 	@PostMapping(path = "/createpatient3")
     public ResponseEntity <String> persistPerson(@Valid @RequestBody Patient patient) {
