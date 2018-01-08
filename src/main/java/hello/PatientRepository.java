@@ -2,6 +2,7 @@ package hello;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 
@@ -10,9 +11,13 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface PatientRepository extends CrudRepository<Patient, Long> {
 
-	public Patient findById(int id);
+	//public Patient findById(int id);
 	
+	public List<Patient> findById(int id);
+	
+	@Query("from Patient p where p.name like %:name%")
 	public List<Patient> findByName(String name);
 	
+	@Query("from Patient p where p.nhsid like %:nhsid%")
 	public List<Patient> findByNhsid(String nhsid);
 }

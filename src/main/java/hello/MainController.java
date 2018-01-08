@@ -146,8 +146,16 @@ public class MainController  {
 		return patientRepository.findAll();
 	}
 	
+	/*
 	@GetMapping(path="/getpatient")
 	public @ResponseBody Patient getPatientsByID(@RequestParam int id) {
+		// This returns a JSON or XML with the users
+		return patientRepository.findById(id);
+	}
+	**/
+	
+	@GetMapping(path="/getpatientbyid")
+	public @ResponseBody List<Patient> getPatientsById(@RequestParam int id) {
 		// This returns a JSON or XML with the users
 		return patientRepository.findById(id);
 	}
