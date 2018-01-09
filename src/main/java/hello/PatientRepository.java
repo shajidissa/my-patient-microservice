@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 public interface PatientRepository extends CrudRepository<Patient, Long> {
 
-	//public Patient findById(int id);
+	public Patient findPatientById(int id);
 	
 	public List<Patient> findById(int id);
 	
