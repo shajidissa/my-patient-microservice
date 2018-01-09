@@ -77,8 +77,14 @@ public class MainController  {
 	}
 	
 	@DeleteMapping(path = "/deletepatient")
-	 public ResponseEntity <String> deletepatient(@Valid @RequestBody Patient patient) {
+	 public ResponseEntity <String> deletepatient(@RequestBody Patient patient) {
 		patientRepository.delete(patient);
+		return ResponseEntity.status(HttpStatus.OK).build();
+	}
+	
+	@DeleteMapping(path = "/deletepatientbyid")
+	 public ResponseEntity <String> deletepatientbyId(int id) {
+		patientRepository.deleteById(id);
 		return ResponseEntity.status(HttpStatus.OK).build();
 	}
 	

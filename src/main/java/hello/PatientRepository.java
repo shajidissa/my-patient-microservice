@@ -21,4 +21,7 @@ public interface PatientRepository extends CrudRepository<Patient, Long> {
 	
 	@Query("from Patient p where p.nhsid like %:nhsid%")
 	public List<Patient> findByNhsid(@Param("nhsid") String nhsid);
+	
+	@Query("delete from Patient p where p.id = :id")
+	public void deleteById(@Param("id") int id);
 }
