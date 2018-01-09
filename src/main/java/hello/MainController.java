@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -41,7 +42,7 @@ public class MainController  {
 	}
 	
 	
-	
+/*	
 	// ResponseEntity<Patient>
 	// https://medium.com/@konstantinnalum/input-validation-and-unit-testing-of-a-rest-controller-in-spring-boot-304b82ca7526
 	@PostMapping(path = "/createpatient")
@@ -67,7 +68,7 @@ public class MainController  {
 		
 		return "{}";
 	}
-	
+*/	
 	
 	@PutMapping(path = "/updatepatient")
 	 public ResponseEntity <String> updatePatient(@Valid @RequestBody Patient patient) {
@@ -75,7 +76,13 @@ public class MainController  {
 		return ResponseEntity.status(HttpStatus.ACCEPTED).build();
 	}
 	
+	@DeleteMapping(path = "/deletepatient")
+	 public ResponseEntity <String> deletepatient(@Valid @RequestBody Patient patient) {
+		patientRepository.delete(patient);
+		return ResponseEntity.status(HttpStatus.OK).build();
+	}
 	
+/*	
 	@PostMapping(path = "/createpatient3")
     public ResponseEntity <String> persistPerson(@Valid @RequestBody Patient patient) {
         
@@ -88,17 +95,17 @@ public class MainController  {
 		
 		return ResponseEntity.status(HttpStatus.CREATED).build();
 		
-		/*
-		if (personService.isValid(person)) {
-            personRepository.persist(person);
-            return ResponseEntity.status(HttpStatus.CREATED).build();
-        }
-        return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).build();
-        */
+		
+		//if (personService.isValid(person)) {
+        //    personRepository.persist(person);
+        //    return ResponseEntity.status(HttpStatus.CREATED).build();
+        //}
+        //return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).build();
+        
     }
-	
-	@PostMapping(path = "/createpatient4")
-	public ResponseEntity<Void> createpatient4(@Valid @RequestBody Patient patient) {
+*/	
+	@PostMapping(path = "/createpatient")
+	public ResponseEntity<Void> createpatient(@Valid @RequestBody Patient patient) {
 
 		Patient n = new Patient();
 		n.setName(patient.getName());
@@ -114,6 +121,7 @@ public class MainController  {
 		return ResponseEntity.created(location).build();
 	}
 	
+/*	
 	@PostMapping(path = "/createpatient5")
 	public Patient createpatient5(@Valid @RequestBody Patient patient) {
 
@@ -150,6 +158,7 @@ public class MainController  {
 		//URI location = ServletUriComponentsBuilder.fromPath("/getpatient/{id}").buildAndExpand(p.getId()).toUri();
 
 	}
+*/
 	
 	@GetMapping(path="/all")
 	public @ResponseBody Iterable<Patient> getAllPatients() {
